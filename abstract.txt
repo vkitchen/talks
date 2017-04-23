@@ -12,3 +12,6 @@ The technology is accessible and available, and offers a significant improvement
 
 Conclusions:
 I expect that the use of the technologies will gradually be takedn up by Academia in the same way they have in the Open Source community.
+
+
+Recent innovations in the field of computing around Software As A Service have made Software Engineering best practices available to a wider audience. Previously prohibitively expensive technologies such as static source code analysis, and difficult to set up technologies such as hosted builds and test running have now been made freely available to Open Source applications. Over the summer I was tasked with performing a survey of SAAS products, and integrating them into an academically developed information retrieval project. The results of which enabled quality assurance for both the users, and developers of the project. As well as a variety of bugs to be found and fixed. I outline in this talk how to compare these technologies and integrate them into similar projects with the expectation that they will increase the quality of development effort and enjoyment in academia in the same way they revolutionised the open source and industry communities.
