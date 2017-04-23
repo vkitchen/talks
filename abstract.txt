@@ -1,0 +1,14 @@
+Motivation:
+Software engineering is a fast moving field with best practices changing rapidly. There has been a recent trend towards hosted solutions which are better maintained and easier to use. These make best practises accessible.
+
+Problem Statement:
+Improving the quality of development of an academic project by pulling in knowledge from the software engineering and open source fields.
+
+Approach:
+General survey of available technologies, with basic comparison between features.
+
+Results:
+The technology is accessible and available, and offers a significant improvement, with minimal investment.
+
+Conclusions:
+I expect that the use of the technologies will gradually be takedn up by Academia in the same way they have in the Open Source community.
