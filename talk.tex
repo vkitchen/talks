@@ -1,7 +1,29 @@
 \documentclass{beamer}
+
+\usepackage{listings}
+\usepackage{color}
+\definecolor{atomPurple}{RGB}{198,120,221}
+\definecolor{atomRed}{RGB}{224,108,117}
+\definecolor{atomGreen}{RGB}{152,195,121}
+\definecolor{atomGreyLight}{RGB}{171,178,191}
+\definecolor{atomGreyDark}{RGB}{92,99,112}
+\definecolor{atomBlack}{RGB}{56,58,66}
+
+\lstset{
+language=C,
+numbers=left,
+showstringspaces=false,
+frame=tb,
+tabsize=4,
+keywordstyle=\color{atomPurple},
+stringstyle=\color{atomGreen},
+commentstyle=\color{atomGreyDark}
+}
+
 \title{Better Software Development Through Automated Tooling}
 \author{Vaughan Kitchen}
 \date{April 28, 2017}
+
 \begin{document}
 
 \begin{frame}
@@ -34,26 +56,91 @@
 \end{frame}
 
 \begin{frame}{An Overview of Tools}
-	\item Unit Tests
-	\item Integration Tests
-	\item Code Coverage
-	\item Static Analysis
-	\item Memory & Leak Checks
-	\item Performance Profiling
-	\item Code Hygiene
-	\item Code Documentation
+	\begin{itemize}
+		\item Unit Tests
+		\item Integration Tests
+		\item System Tests
+		\item Regression Tests
+		\item Code Coverage
+		\item Static Analysis
+		\item Memory \& Leak Checks
+		\item Performance Profiling
+		\item Code Hygiene
+		\item Code Documentation
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Continuous Integration pt.1}
-	empty
+	Travis CI
+	\begin{itemize}
+		\item Automates Build
+		\item Integrates with Github (or BitBucket for some CI systems)
+		\item Runs on every push
+		\item An hour of compute time per VM instance
+		\item What else can it do besides build?
+	\end{itemize}
 \end{frame}
 
-\begin{frame}{Unit Testing}
-	empty
+\begin{frame}{Unit Testing 1}
+	\begin{itemize}
+		\item Part of your test suite
+		\item Runs from your Continuous Integration system
+		\item Assures the quality of individual units
+		\item Smallest testable unit (Function, or Class)
+		\item Simplifies integration
+		\item Test-Driven Development
+		\item JUnit, CUnit, Unity, tinytest, Jasmine...
+	\end{itemize}
+\end{frame}
+
+\defverbatim[colored]\lstI{\begin{lstlisting}
+#include "unity.h"
+#include "string2.h"
+
+void test_string_append(void)
+	{
+	/* test the normal use case */
+	struct string *s = string_new_c("cat");
+	string_append_c(s, "dog");
+	TEST_ASSERT_EQUAL_STRING(s->str, "catdog");
+	TEST_ASSERT_EQUAL_UINT(s->bytes, 6);
+
+	string_free(s);
+	}
+\end{lstlisting}
+}
+
+\begin{frame}{Unit Testing 2}
+	\lstI
 \end{frame}
 
 \begin{frame}{Integration Testing}
-	empty
+	\begin{itemize}
+		\item Part of your test suite
+		\item Runs from your Continous Integration system
+		\item Next step up from unit tests
+		\item Tests whether groups of modules work together correctly
+		\item Doesn't test the correctness of the system as a whole
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{System Testing}
+	\begin{itemize}
+		\item Does the application do what it should?
+		\item Hard to automate entirely
+		\item Can automate some code paths (CI has full power of Linux)
+		\item bats (Bash Automated Testing System)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Regression Testing}
+	\begin{itemize}
+		\item Does the previously functional software still function correctly?
+		\item Computing power is now cheap
+		\item Run the entire test suite for each push
+		\item Continuous Integration system will notify on breakage
+		\item Regression tests are now free
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Code Coverage}
