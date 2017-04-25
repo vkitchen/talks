@@ -219,8 +219,52 @@ void test_string_append(void)
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{YAML}
-	empty
+\begin{frame}{YAML 1}
+	\begin{itemize}
+		\item Superset of JSON
+		\item Supports comments
+		\item Often used as a configuration format
+	\end{itemize}
+\end{frame}
+
+\defverbatim[colored]\lstII{\begin{lstlisting}
+"object": {
+	"key": "value",
+	"array": [
+		{
+			"null_value": null
+		},
+		{
+			"boolean": true
+		},
+		{
+			"integer": 1
+		},
+		{
+			"string": "rope"
+		}
+	]
+}
+\end{lstlisting}
+}
+
+\begin{frame}{YAML 2}
+	\lstII
+\end{frame}
+
+\defverbatim[colored]\lstIII{\begin{lstlisting}
+object:
+	key: value
+  array:
+    - null_value:
+    - boolean: true
+    - integer: 1
+		- string: rope
+\end{lstlisting}
+}
+
+\begin{frame}{YAML 3}
+	\lstIII
 \end{frame}
 
 \begin{frame}{Our Set Up}
@@ -228,7 +272,6 @@ void test_string_append(void)
 \end{frame}
 
 \begin{frame}{Live Demonstration}
-	empty
 \end{frame}
 
 \begin{frame}{Other Set Ups}
