@@ -80,18 +80,6 @@ commentstyle=\color{atomGreyDark}
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Unit Testing 1}
-	\begin{itemize}
-		\item Part of your test suite
-		\item Runs from your Continuous Integration system
-		\item Assures the quality of individual units
-		\item Smallest testable unit (Function, or Class)
-		\item Simplifies integration
-		\item Test-Driven Development
-		\item JUnit, CUnit, Unity, tinytest, Jasmine...
-	\end{itemize}
-\end{frame}
-
 \defverbatim[colored]\lstI{\begin{lstlisting}
 #include "unity.h"
 #include "string2.h"
@@ -109,27 +97,81 @@ void test_string_append(void)
 \end{lstlisting}
 }
 
-\begin{frame}{Unit Testing 2}
+\begin{frame}{Unit Testing 1}
 	\lstI
 \end{frame}
 
-\begin{frame}{Integration Testing}
+\begin{frame}{Unit Testing 2}
+	\begin{tabular}{cl}
+		\begin{tabular}{c}
+			\includegraphics[width=100px]{unittesting.jpg}
+		\end{tabular}
+	&
+		\begin{tabular}{l}
+			\parbox{0.5\linewidth}{
+				\begin{itemize}
+					\item If it isn't tested, it doesn't work
+					\item Part of your test suite
+					\item Runs from your Continuous Integration system
+					\item Assures the quality of individual units
+					\item Smallest testable unit (Function, or Class)
+					\item Simplifies integration
+					\item Confidence in refactoring
+					\item Provides documentation
+					\item JUnit, CUnit, Unity, tinytest, Jasmine...
+				\end{itemize}
+			}
+		\end{tabular}
+	\end{tabular}
+\end{frame}
+
+\begin{frame}{Test Driven Development}
 	\begin{itemize}
-		\item Part of your test suite
-		\item Runs from your Continous Integration system
-		\item Next step up from unit tests
-		\item Tests whether groups of modules work together correctly
-		\item Doesn't test the correctness of the system as a whole
+		\item How do you know when you're finished?
+		\item Do you know what you're building?
+		\item How far through building it are you?
+		\item Refactor mercilessly
+		\item Type systems can't always save you
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Integration Testing}
+	\begin{tabular}{cl}
+		\begin{tabular}{c}
+			\includegraphics[width=100px]{integrationtesting.jpg}
+		\end{tabular}
+	&
+		\begin{tabular}{l}
+			\parbox{0.5\linewidth}{
+				\begin{itemize}
+					\item Part of your test suite
+					\item Runs from your Continous Integration system
+					\item Next step up from unit tests
+					\item Tests whether groups of modules work together correctly
+					\item Doesn't test the correctness of the system as a whole
+				\end{itemize}
+			}
+		\end{tabular}
+	\end{tabular}
+\end{frame}
+
 \begin{frame}{System Testing}
-	\begin{itemize}
-		\item Does the application do what it should?
-		\item Hard to automate entirely
-		\item Can automate some code paths (CI has full power of Linux)
-		\item bats (Bash Automated Testing System)
-	\end{itemize}
+	\begin{tabular}{cl}
+		\begin{tabular}{c}
+			\includegraphics[width=100px]{system_testing.jpg}
+		\end{tabular}
+	&
+		\begin{tabular}{l}
+			\parbox{0.5\linewidth}{
+			\begin{itemize}
+				\item Does the application do what it should?
+				\item Hard to automate entirely
+				\item Can automate some code paths (CI has full power of Linux)
+				\item bats (Bash Automated Testing System)
+			\end{itemize}
+			}
+		\end{tabular}
+	\end{tabular}
 \end{frame}
 
 \begin{frame}{Regression Testing}
@@ -143,6 +185,7 @@ void test_string_append(void)
 \end{frame}
 
 \begin{frame}{Code Coverage}
+	\includegraphics[width=100px]{codecov.png}
 	\begin{itemize}
 		\item How much of the source code does the test suite execute?
 		\item Do tests cover succeeding and failing paths?
@@ -152,12 +195,10 @@ void test_string_append(void)
 		\item Condition coverage
 		\item Codecov, Coveralls
 	\end{itemize}
-	\begin{block}{Code Coverage Badge}
-		\includegraphics[width=200px]{codecov.png}
-	\end{block}
 \end{frame}
 
 \begin{frame}{Static Analysis}
+	\includegraphics[width=100px]{coverity.png}
 	\begin{itemize}
 		\item Verify behaviour
 		\item Lint for best practices
@@ -165,9 +206,6 @@ void test_string_append(void)
 		\item Sometimes freely available to Open Source projects
 		\item Can be integrated into CI
 	\end{itemize}
-	\begin{block}{Coverity Scan Badge}
-		\includegraphics[width=200px]{coverity.png}
-	\end{block}
 \end{frame}
 
 \begin{frame}{memcheck}
@@ -215,6 +253,7 @@ void test_string_append(void)
 		\item Feature toggles for partially complete code
 		\item Continuous Delivery (mainline is always in a deployable state)
 		\item Continuous Deployment (automatic deployment to production)
+		\item Notify the developer that broke the code (default) or specified manager/team
 	\end{itemize}
 \end{frame}
 
@@ -290,7 +329,14 @@ object:
 \end{frame}
 
 \begin{frame}{Continuous Deployment}
-	empty
+	\begin{itemize}
+		\item Next step from Continuous Delivery
+		\item Code automatically deployed to production
+		\item Seen in SAAS or Web Applications
+		\item Application monitoring and Dashboards
+		\item Feature Toggles
+		\item Graphs and anomoly detection
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Property Based Testing}
@@ -307,6 +353,12 @@ object:
 
 \begin{frame}{How Integrations Work}
 	empty
+\end{frame}
+
+\begin{frame}{Attributions}
+	\begin{itemize}
+		\item http://softwaretestingfundamentals.com Testing images, used under CC Attribution-ShareAlike
+	\end{itemize}
 \end{frame}
 
 \end{document}
