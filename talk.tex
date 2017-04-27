@@ -80,6 +80,10 @@ commentstyle=\color{atomGreyDark}
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Unit Testing 1}
+	\includegraphics[width=\linewidth]{unit-test.jpeg}
+\end{frame}
+
 \defverbatim[colored]\lstI{\begin{lstlisting}
 #include "unity.h"
 #include "string2.h"
@@ -97,11 +101,11 @@ void test_string_append(void)
 \end{lstlisting}
 }
 
-\begin{frame}{Unit Testing 1}
+\begin{frame}{Unit Testing 2}
 	\lstI
 \end{frame}
 
-\begin{frame}{Unit Testing 2}
+\begin{frame}{Unit Testing 3}
 	\begin{tabular}{cl}
 		\begin{tabular}{c}
 			\includegraphics[width=100px]{unittesting.jpg}
@@ -340,19 +344,36 @@ object:
 \end{frame}
 
 \begin{frame}{Property Based Testing}
-	empty
-\end{frame}
-
-\begin{frame}{Trunk Development and Feature Toggles}
-	empty
+	Fuzzing
+	\begin{itemize}
+		\item Runs the program against random input
+		\item Used to check for security vulnerabilities
+		\item American Fuzzy Lop (AFL) uses genetic algorithms and instrumentation to try and reach all code paths
+	\end{itemize}
+	Property Based Testing
+	\begin{itemize}
+		\item Unit Testing on roids
+		\item Do properties of the output still hold when the program is run with random input
+		\item Forces the consideration of edge cases
+		\item Reduces failures to minimal counter examples
+		\item QuickCheck, ScalaCheck, ClojureCheck, JavaQuickCheck, RapidCheck (C++)
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Roll Your Own}
-	empty
-\end{frame}
-
-\begin{frame}{How Integrations Work}
-	empty
+	Webhooks
+	\begin{itemize}
+		\item Webhooks form the foundation of integrations
+		\item Subscribe to specific events
+		\item push, fork, issues, release, watch...
+		\item HTTP POST payload to specified URL
+		\item Secure your webhook with a secret token, payloads will be signed
+	\end{itemize}
+	Other APIs
+	\begin{itemize}
+		\item There is also an integration API to give applications access to private repositories etc.
+		\item OAuth application is authenticated as if it's the user
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Attributions}
