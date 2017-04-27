@@ -1,10 +1,11 @@
 \documentclass{beamer}
 
+\usepackage{hyperref}
 \usepackage{listings}
 \usepackage{color}
 \definecolor{atomPurple}{RGB}{198,120,221}
-\definecolor{atomRed}{RGB}{224,108,117}
-\definecolor{atomGreen}{RGB}{152,195,121}
+\definecolor{atomRed}{RGB}{203,15,64}
+\definecolor{atomGreen}{RGB}{0,128,0}
 \definecolor{atomGreyLight}{RGB}{171,178,191}
 \definecolor{atomGreyDark}{RGB}{92,99,112}
 \definecolor{atomBlack}{RGB}{56,58,66}
@@ -14,12 +15,15 @@ language=C,
 numbers=left,
 showstringspaces=false,
 tabsize=4,
-keywordstyle=\color{atomPurple},
+columns=flexible,
+keepspaces=true,
+keywordstyle=\color{atomRed},
 stringstyle=\color{atomGreen},
 commentstyle=\color{atomGreyDark}
 }
 
 \title{Better Software Development Through Automated Tooling}
+\subtitle{Summer Bursary 2017}
 \author{Vaughan Kitchen}
 \date{April 28, 2017}
 
@@ -30,18 +34,18 @@ commentstyle=\color{atomGreyDark}
 \end{frame}
 
 \begin{frame}{Structure}
-\begin{itemize}
-	\item Background
-	\item Survey of Tools
-	\item Live Demonstration
-	\item Project Examples
-	\item Related Topics
-\end{itemize}
+	\begin{itemize}
+		\item Background
+		\item Survey of Tools
+		\item Live Demonstration
+		\item Project Examples
+		\item Related Topics
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Background}
 	\begin{block}{What}
-		Plug as many automatic tools as possible into the development of JASSv2
+		Plug as many automated (free) tools as possible into the development of JASSv2
 		(A search enging being developed by Andrew Trotman)
 	\end{block}
 	\begin{block}{When}
@@ -51,6 +55,34 @@ commentstyle=\color{atomGreyDark}
 		The approach was to first figure out what tools we might want. Then what
 		tools were available to us. Which of the available ones were worth
 		integrating. And then get them integrated
+	\end{block}
+\end{frame}
+
+\begin{frame}{Why}
+	\begin{block}{A story}
+		You're a developer on a small team for a new project. You don't have the
+		capital to hire quality assurance team so all testing is done internally.
+		Up until now you've build the project and tested it at the end, but you've
+		noticed it's becoming more and more difficult to track down bugs. You wonder
+		if there's a way to catch them earlier in the life cycle, which would also
+		allow you to not develop around them. So you begin writing unit tests.
+		Some of the other developers think this is a great idea so begin writing tests
+		as well. But they're not always the best at running them every time they commit.
+		It's crunch time and you have to get the product out to your customers. One of
+		the other developers writes a last minute fix and you ship. Oh no, she reintroduced
+		a bug that was fixed weeks ago and has a test for. But because the tests weren't
+		run it managed to make its way back into the code. You wonder if there's a better
+		way
+	\end{block}
+\end{frame}
+
+\begin{frame}{Why}
+	\begin{block}{A worse story}
+		You don't unit test
+	\end{block}
+	\begin{block}{A common story}
+		You want to test. The rest of your team doesn't. How do you go about slowly
+		introducing it and convincing your team of the benefit
 	\end{block}
 \end{frame}
 
@@ -69,18 +101,31 @@ commentstyle=\color{atomGreyDark}
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Continuous Integration pt.1}
+\begin{frame}{Continuous Integration}
 	Travis CI
 	\begin{itemize}
 		\item Automates Build
 		\item Integrates with Github (or BitBucket for some CI systems)
 		\item Runs on every push
 		\item An hour of compute time per VM instance
+		\item Do you develop on the same environment as your deploy?
+		\item What if you deploy to multiple environments?
 		\item What else can it do besides build?
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Unit Testing 1}
+\begin{frame}{Continuous Integration}
+	\begin{itemize}
+		\item Merge all working copies to mainline several times a day
+		\item Prevents "integration hell"
+		\item Feature toggles for partially complete code
+		\item Continuous Delivery (mainline is always in a deployable state)
+		\item Continuous Deployment (automatic deployment to production)
+		\item Notify the developer that broke the code (default) or specified manager/team
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Unit Testing}
 	\includegraphics[width=\linewidth]{unit-test.jpeg}
 \end{frame}
 
@@ -101,16 +146,16 @@ void test_string_append(void)
 \end{lstlisting}
 }
 
-\begin{frame}{Unit Testing 2}
+\begin{frame}{Unit Testing}
 	\lstI
 \end{frame}
 
-\begin{frame}{Unit Testing 3}
+\begin{frame}{Unit Testing}
 	\begin{tabular}{cl}
 		\begin{tabular}{c}
 			\includegraphics[width=100px]{unittesting.jpg}
 		\end{tabular}
-	&
+		&
 		\begin{tabular}{l}
 			\parbox{0.5\linewidth}{
 				\begin{itemize}
@@ -131,12 +176,19 @@ void test_string_append(void)
 
 \begin{frame}{Test Driven Development}
 	\begin{itemize}
+		\item Performed after the design is finished
+		\item Used to build your units
 		\item How do you know when you're finished?
 		\item Do you know what you're building?
 		\item How far through building it are you?
 		\item Refactor mercilessly
 		\item Type systems can't always save you
+		\item Red Green Refactor
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Test Driven Development}
+	\includegraphics[width=\linewidth]{TDD_Global_Lifecycle.png}
 \end{frame}
 
 \begin{frame}{Integration Testing}
@@ -144,11 +196,12 @@ void test_string_append(void)
 		\begin{tabular}{c}
 			\includegraphics[width=100px]{integrationtesting.jpg}
 		\end{tabular}
-	&
+		&
 		\begin{tabular}{l}
 			\parbox{0.5\linewidth}{
 				\begin{itemize}
 					\item Part of your test suite
+					\item Fine line between unit tests and integrations tests
 					\item Runs from your Continous Integration system
 					\item Next step up from unit tests
 					\item Tests whether groups of modules work together correctly
@@ -164,15 +217,15 @@ void test_string_append(void)
 		\begin{tabular}{c}
 			\includegraphics[width=100px]{system_testing.jpg}
 		\end{tabular}
-	&
+		&
 		\begin{tabular}{l}
 			\parbox{0.5\linewidth}{
-			\begin{itemize}
-				\item Does the application do what it should?
-				\item Hard to automate entirely
-				\item Can automate some code paths (CI has full power of Linux)
-				\item bats (Bash Automated Testing System)
-			\end{itemize}
+				\begin{itemize}
+					\item Does the application do what it should?
+					\item Hard to automate entirely
+					\item Can automate some code paths (CI has full power of Linux)
+					\item bats (Bash Automated Testing System)
+				\end{itemize}
 			}
 		\end{tabular}
 	\end{tabular}
@@ -180,12 +233,16 @@ void test_string_append(void)
 
 \begin{frame}{Regression Testing}
 	\begin{itemize}
-		\item Does the previously functional software still function correctly?
-		\item Computing power is now cheap
+		\item Does my program still do the same?
+		\item Computing power is now cheap (free)
 		\item Run the entire test suite for each push
 		\item Continuous Integration system will notify on breakage
 		\item Regression tests are now free
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Regression Testing}
+	\includegraphics[width=\linewidth]{regression.png}
 \end{frame}
 
 \begin{frame}{Code Coverage}
@@ -225,7 +282,7 @@ void test_string_append(void)
 	\begin{itemize}
 		\item Algorithmic performance
 		\item Web performance
-		\item Responsive vs Throughput
+		\item Latency vs Throughput
 		\item Part of regression testing
 		\item Instrumentation, Sampling
 		\item Gprof, Callgrind
@@ -250,14 +307,15 @@ void test_string_append(void)
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Continuous Integration pt.2}
+\begin{frame}{Our Set Up}
 	\begin{itemize}
-		\item Merge all working copies to mainline several times a day
-		\item Prevents "integration hell"
-		\item Feature toggles for partially complete code
-		\item Continuous Delivery (mainline is always in a deployable state)
-		\item Continuous Deployment (automatic deployment to production)
-		\item Notify the developer that broke the code (default) or specified manager/team
+		\item Travis CI (OSX, and Linux)
+		\item AppVeyor (Windows)
+		\item Unit Testing in a custom framework
+		\item Coverity (coverity\_scan branch)
+		\item Valgrind
+		\item CodeCov (Gcov)
+		\item CodeDocs.xyz (integrates directly with GitHub)
 	\end{itemize}
 \end{frame}
 
@@ -273,18 +331,11 @@ void test_string_append(void)
 "object": {
 	"key": "value",
 	"array": [
-		{
-			"null_value": null
-		},
-		{
-			"boolean": true
-		},
-		{
-			"integer": 1
-		},
-		{
-			"string": "rope"
-		}
+		{ "null_value": null },
+		{ "boolean": true },
+		{ "numeric": 1 },
+		{ "string": "unquoted" },
+		{ "quoted": "123" }
 	]
 }
 \end{lstlisting}
@@ -297,28 +348,17 @@ void test_string_append(void)
 \defverbatim[colored]\lstIII{\begin{lstlisting}
 object:
 	key: value
-  array:
-    - null_value:
-    - boolean: true
-    - integer: 1
-		- string: rope
+	array:
+		- null_value:
+		- boolean: true
+		- numeric: 1
+		- string: unquoted
+		- quoted: "123"
 \end{lstlisting}
 }
 
 \begin{frame}{YAML 3}
 	\lstIII
-\end{frame}
-
-\begin{frame}{Our Set Up}
-	\begin{itemize}
-		\item Travis CI (OSX, and Linux)
-		\item AppVeyor (Windows)
-		\item Unit Testing in a custom framework
-		\item Coverity (coverity\_scan branch)
-		\item Valgrind
-		\item CodeCov (Gcov)
-		\item CodeDocs.xyz (integrates directly with GitHub)
-	\end{itemize}
 \end{frame}
 
 \begin{frame}{Live Demonstration}
@@ -378,7 +418,8 @@ object:
 
 \begin{frame}{Attributions}
 	\begin{itemize}
-		\item http://softwaretestingfundamentals.com Testing images, used under CC Attribution-ShareAlike
+		\item \url{http://softwaretestingfundamentals.com} Testing heirarchy images, used under CC Attribution-ShareAlike
+		\item \url{https://upload.wikimedia.org/wikipedia/commons/0/0b/TDD_Global_Lifecycle.png} TDD, CC Attribution-SharAlike
 	\end{itemize}
 \end{frame}
 
