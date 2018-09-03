@@ -1,0 +1,19 @@
+Motivation:
+Software engineering is a fast moving field with best practices changing rapidly. There has been a recent trend towards hosted solutions which are better maintained and easier to use. These make best practises accessible.
+
+Problem Statement:
+Improving the quality of development of an academic project by pulling in knowledge from the software engineering and open source fields.
+
+Approach:
+General survey of available technologies, with basic comparison between features.
+
+Results:
+The technology is accessible and available, and offers a significant improvement, with minimal investment.
+
+Conclusions:
+I expect that the use of the technologies will gradually be takedn up by Academia in the same way they have in the Open Source community.
+
+
+Better Software Development Through Automated Tooling
+
+Recent innovations in the field of computing around Software As A Service have made Software Engineering best practices available to a wider audience. Previously prohibitively expensive technologies such as static source code analysis, and difficult to set up technologies such as hosted builds and test running have now been made freely available to Open Source applications. Over the summer I was tasked with performing a survey of SAAS products, and integrating them into an academically developed information retrieval project. The results of which enabled quality assurance for both the users, and developers of the project. As well as a variety of bugs to be found and fixed. I outline in this talk how to compare these technologies and integrate them into similar projects with the expectation that they will increase the quality of development effort and enjoyment in academia in the same way they revolutionised the open source and industry communities.
