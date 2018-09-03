@@ -1,0 +1,14 @@
+Why sigils? Couldn't you do without them?
+
+There are several reasons:
+
+    they make it easy to interpolate variables into strings
+
+    they form micro-namespaces for different variables and twigils, thus avoiding name clashes
+
+    they allow easy single/plural distinction
+
+    they work like natural languages that use mandatory noun markers, so our brains are built to handle it
+
+    they aren't mandatory, since you can declare sigilless names (if you don't mind the ambiguity)
+
