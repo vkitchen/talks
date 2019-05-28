@@ -1,0 +1,102 @@
+\documentclass{beamer}
+
+\usepackage{dirtytalk}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\definecolor{atomPurple}{RGB}{198,120,221}
+\definecolor{atomRed}{RGB}{203,15,64}
+\definecolor{atomGreen}{RGB}{0,128,0}
+\definecolor{atomGreyLight}{RGB}{171,178,191}
+\definecolor{atomGreyDark}{RGB}{92,99,112}
+\definecolor{atomBlack}{RGB}{56,58,66}
+
+\lstset{
+language=C,
+numbers=left,
+showstringspaces=false,
+tabsize=4,
+columns=flexible,
+keepspaces=true,
+keywordstyle=\color{atomRed},
+stringstyle=\color{atomGreen},
+commentstyle=\color{atomGreyDark}
+}
+
+\title{Entity Linking for Fun and Profit}
+\author{Vaughan Kitchen}
+\date{May 29, 2019}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Structure}
+	\begin{itemize}
+		\item Background
+		\item Techniques
+		\item Maybe other stuff
+		\item Maybe related Topics
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Background}
+	\begin{block}{Why}
+		Bag of words models are only so good. Wouldn't it be nice if we could search semantically?
+	\end{block}
+	\begin{block}{What}
+		User searches for ``michael motown first band"
+
+		Entities ``Michael Jackson", ``Motown Records", ``The Jackson 5ive"
+	\end{block}
+	\begin{block}{How}
+		\textit{entity-by-entity linking}, \textit{collective entity linking}, \textit{knowledge base}, \textit{graph theory}, \textit{neural networks}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Entity-by-Entity Linking}
+	\begin{itemize}
+		\item One word at a time
+		\item Simple
+		\item Fast
+		\item Poor results
+		\item Comes from DB theory
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Collective Entity Linking}
+	\begin{itemize}
+		\item Uses context
+		\item Link all words?
+		\item How to detect entities?
+		\item How to make fast?
+		\item Neural network it?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{How to Knowledge Base}
+	\begin{itemize}
+		\item Use Wikipedia
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Queries and Documents}
+	\begin{itemize}
+		\item Queries don't use the same language as documents
+		\item ``michael motown first band"
+		\item Can they be linked the same way?
+		\item Queries often short. Not enough context
+		\item Results for partial disambiguation
+		\item ``michael singer"
+		\item ``George Michael", ``Michael Jackson", ``Michael Bublé", ``Michael Alan Singer (Author)"
+		\item Best candidate?
+		\item ``clinton falls asleep" $\rightarrow$ ``clinton falls $\vert$ asleep", ``clinton $\vert$ falls asleep"
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Questions?}
+\end{frame}
+
+\end{document}
