@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Loader.js</h1>
+					<h3>Next Gen Module Loader</h3>
+          <p>
+            (But not actually though :))
+          </p>
+				</section>
+
+				<section>
+					<h2>JavaScript Sucks!</h2>
+					<p>
+						No module support (until recently)
+					</p>
+          <ul>
+            <li><b>Safari 10.1</b></li>
+            <li><b>Chrome 60</b> – behind the Experimental Web Platform flag in chrome:flags.</li>
+            <li><b>Firefox 54</b> – behind the dom.moduleScripts.enabled setting in about:config.</li>
+            <li><b>Edge 15</b> – behind the Experimental JavaScript Features setting in about:flags.</li>
+          </ul>
+          <p>
+            Probably safe to put into production right...
+          </p>
+				</section>
+
+        <section>
+          <h3>Maybe there's a library or tool for that?</h3>
+        </section>
+
+        <section>
+          <h2>Yep, JavaScript Sucks!</h2>
+          <ul>
+            <li>Brunch - Late 2011, Early 2012?</li>
+            <li>Grunt - 2012</li>
+            <li>Gulp - 2014?</li>
+            <li>Browserify - 2011</li>
+            <li>Webpack - 2012</li>
+            <li>RequireJS - 2010?</li>
+            <li>Rollup - 2015?</li>
+            <li>Parcel - 2017</li>
+            <li>...</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Just write your own?</h3>
+        </section>
+
+				<section>
+          <h3>Demos</h3>
+        </section>
+
+				<section style="text-align: left;">
+					<h1>THE END</h1>
+					<ul>
+            <li>
+              <a href="https://github.com/vkitchen/talks">https://github.com/vkitchen/talks</a>
+            </li>
+            <li>
+              <a href="https://stackoverflow.com/a/44086319">Module support list by Ali</a>
+            </li>
+            <li>
+						  <a href="https://github.com/hakimel/reveal.js">reveal.js</a>
+            </li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
