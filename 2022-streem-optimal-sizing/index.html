@@ -16,8 +16,719 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section data-markdown>
+					<textarea data-template>
+						# Optimal Sizing
+					</textarea>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							# Why this talk?
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Why this talk?
+							* Cleaning out unread bookmarks
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Why this talk?
+							* Cleaning out unread bookmarks
+							* Noticed some weren't "common wisdom"
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Why this talk?
+							* Cleaning out unread bookmarks
+							* Noticed some weren't "common wisdom"
+							* Three had a similar theme
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Why this talk?
+							* Cleaning out unread bookmarks
+							* Noticed some weren't "common wisdom"
+							* Three had a similar theme
+							* I don't like our linter rule
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## My story of code stlye
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## With hopefully not too many diversions
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Or is it digressions?
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## I digress...
+						</textarea>
+					</section>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						## This guy!
+						<img src="img/martin-fowler.jpg">
+					</textarea>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							# Martin Fowler
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Martin Fowler
+							* Big influence for a baby programmer
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Martin Fowler
+							* Big influence for a baby programmer
+							* Along with Paul Graham
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Martin Fowler
+							* Big influence for a baby programmer
+							* Along with Paul Graham
+							* I now feel like they influenced through retoric
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Martin Fowler
+							* Big influence for a baby programmer
+							* Along with Paul Graham
+							* I now feel like they influenced through retoric
+							* Re-read all the books you learnt from. How many still hold up?
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							# FunctionLength
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## FunctionLength
+							> During my career, I've heard many arguments about how long a function should be. This is a proxy for the more important question - when should we enclose code in its own function?
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## FunctionLength
+							> Some of these guidelines were based on length, such as functions should be no larger than fit on a screen.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## FunctionLength
+							> Some were based on reuse - any code used more than once should be put in its own function, but code only used once should be left inline.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## FunctionLength
+							> The argument that makes most sense to me, however, is the separation between intention and implementation.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## FunctionLength
+							> If you have to spend effort into looking at a fragment of code to figure out what it's doing, then you should extract it into a function and name the function after that “what”. That way when you read it again, the purpose of the function leaps right out at you, and most of the time you won't need to care about how the function fulfills its purpose - which is the body of the function.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Seems reasonable
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## We'll loop back
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							## Code is read more often than it is written.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Code should always be written in a way that promotes readability.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Readability
+							* Attributed to Guido van Rossum
+							* Attributed to Uncle Bob (Robert C. Martin)
+							* Probably not that unique a thought
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Not readable?
+							```
+							perl -lne 'print $1 while (/\"((\\.|[^\"])*)\"/g)' filename
+							```
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Not readable?
+							```
+							perl -lne 'print $1 while (/\"((\\.|[^\"])*)\"/g)' filename
+							```
+							Prints quoted strings avoiding escaped quotes
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Readability
+							* For extending code
+							* For debugging code
+							* Same structure for both?
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							# John Carmack on Inlined Code
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## On Inlined Code
+							> The real enemy addressed by inlining is unexpected dependency and mutation of state, which functional programming solves more directly and completely. However, if you are going to make a lot of state changes, having them all happen inline does have advantages; you should be made constantly aware of the full horror of what you are doing.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## On Inlined Code
+							```
+							void MinorFunction1( void ) {
+							}
+							 
+							void MinorFunction2( void ) {
+							}
+							 
+							void MinorFunction3( void ) {
+							}
+							 
+							void MajorFunction( void ) {
+								MinorFunction1();
+								MinorFunction2();
+								MinorFunction3();
+							}
+							```
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## On Inlined Code
+							```
+							void MajorFunction( void ) {
+								MinorFunction1();
+								MinorFunction2();
+								MinorFunction3();
+							}
+
+							void MinorFunction1( void ) {
+							}
+							 
+							void MinorFunction2( void ) {
+							}
+							 
+							void MinorFunction3( void ) {
+							}
+							```
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## On Inlined Code
+							```
+							void MajorFunction( void ) {
+								// MinorFunction1
+
+								// MinorFunction2
+
+								// MinorFunction3
+
+							}
+							```
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## On Inlined Code
+							> Besides awareness of the actual code being executed, inlining functions also has the benefit of not making it possible to call the function from other places. That sounds ridiculous, but there is a point to it. As a codebase grows over years of use, there will be lots of opportunities to take a shortcut and just call a function that does only the work you think needs to be done.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## On Inlined Code
+							> There might be a FullUpdate() function that calls PartialUpdateA(), and PartialUpdateB(), but in some particular case you may realize (or think) that you only need to do PartialUpdateB(), and you are being efficient by avoiding the other work. Lots and lots of bugs stem from this. Most bugs are a result of the execution state not being exactly what you think it is.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## On Inlined Code
+							>  The function that is least likely to cause a problem is one that doesn't exist, which is the benefit of inlining it. If a function is only called in a single place, the decision is fairly simple.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## On Inlined Code
+							> Using large comment blocks inside the major function to delimit the minor functions is a good idea for quick scanning
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## On Inlined Code
+							> I know there are some rules of thumb about not making functions larger than a page or two, but I specifically disagree with that now -- if a lot of operations are supposed to happen in a sequential fashion, their code should follow sequentially.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## On Inlined Code
+							> Currently I am leaning towards using heavyweight objects as the reasonable break point for combining code, and trying to reduce the use of medium sized helper objects, while making any very lightweight objects as purely functional as possible if they have to exist at all.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Functional core, imperative shell?
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							# On being the right size - Martin Tournoij
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## On being the right size
+							> There’s this pattern: “everything should be done in small easy to understand units, which can easily be combined to form larger more complex systems”. Examples include microkernels, microservices, small packages, and small functions.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## On being the right size
+							> Software split in to small functions is often harder to understand. Sure, the individual functions may be easy to understand, but understanding the overal system is much harder.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Functions are 1D, call graphs are 2D
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## On being the right size
+							> Sometimes longer functions in the form of “do this, then do that, then do such” are okay, especially for more complex workflows that naturally belong together. Splitting this up in to tiny functions often doesn’t make the overall logic easier to understand.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## On being the right size
+							> A program should be understandable, not “small” or “DRY”; those are merely tools to achieve this understandability, but not end-goals in themselves. Applying any tool indiscriminately is not going to end well.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## On being the right size
+							> I suspect this is why function (sic) programming hasn’t taken over yet. In spite of all the advantages, actually making useful programs with it is harder than just writing a many simple functions.
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							# The life of a file - Evan Czaplicki
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## The life of a file
+							<img src="img/folk-knowledge.png">
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## The life of a file
+							<img src="img/data-structures.png">
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							# Complexity Has to Live Somewhere - Fred Hebert
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Complexity Has to Live Somewhere
+							> Fighting complexity is a recurring theme of software development I've seen repeat itself over and over again. It's something I keep seeing debated at all levels
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Complexity Has to Live Somewhere
+							> just how much commenting should go on in functions and methods? What's the ideal amount of abstraction? When does a framework start having "too much magic"? When are there too many languages in an organisation?
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Complexity Has to Live Somewhere
+							> We try to get rid of the complexity, control it, and seek simplicity. I think framing things that way is misguided. Complexity has to live somewhere.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Complexity Has to Live Somewhere
+							> One thing Resilience Engineering has taught me is the concept of Requisite Variety from cybernetics: only complexity can handle complexity.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Complexity Has to Live Somewhere
+							* if you make the build tool simple, it won't handle all the weird edge cases that exist out there
+							* if you want to handle the weird edge cases, you need to deviate from whatever norm you wanted to establish
+							* if you want ease of use for common defaults, the rules for common defaults must be shared between the tool and the users, who shape their systems to fit the tool's expectations
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Complexity Has to Live Somewhere
+							* if you allow configuration or scripting, you give the users a way to specify the rules that must be shared, so the tool fits their systems
+							* if you want to keep the tool simple, you have to force your users to only play within the parameters that fit this simplicity
+							* if your users' use cases don't map well to your simplicity, they will build shims around your tool to attain their objectives
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Complexity Has to Live Somewhere
+							> This cannot be avoided. Complexity has to live somewhere. It's always a part of people solving problems, whether you realize it or not.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Complexity Has to Live Somewhere
+							> A common trap we have in software design comes from focusing on how "simple" we find it to read and interpret a given piece of code. Focusing on simplicity is fraught with peril because complexity can't be removed: it can just be shifted around. If you move it out of your code, where does it go?
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Complexity Has to Live Somewhere
+							> The trap is insidious in software architecture. When we adopt something like microservices, we try to make it so that each service is individually simple.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Complexity Has to Live Somewhere
+							> But unless this simplicity is so constraining that your actual application inherits it and is forced into simplicity, it still has to go somewhere. If it's not in the individual microservices, then where is it?
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Complexity Has to Live Somewhere
+							> Complexity has to live somewhere. If you are lucky, it lives in well-defined places. In code where you decided a bit of complexity should go, in documentation that supports the code, in training sessions for your engineers. You give it a place without trying to hide all of it.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## FunctionLength
+							> If you have to spend effort into looking at a fragment of code to figure out what it's doing, then you should extract it into a function and name the function after that “what”. That way when you read it again, the purpose of the function leaps right out at you, and most of the time you won't need to care about how the function fulfills its purpose - which is the body of the function.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Still seems reasonable?
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Not every line of code needs to be named
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							# I, Pencil - Leonard E. Read
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## I, Pencil
+							I am a lead pencil—the ordinary wooden pencil familiar to all boys and girls and adults who can read and write.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## I, Pencil
+							Writing is both my vocation and my avocation; that’s all I do.
+
+You may wonder why I should write a genealogy. Well, to begin with, my story is interesting. And, next, I am a mystery —more so than a tree or a sunset or even a flash of lightning.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## I, Pencil
+							I, Pencil, simple though I appear to be, merit your wonder and awe, a claim I shall attempt to prove. in fact, if you can understand me—no, that’s too much to ask of anyone—if you can become aware of the miraculousness which I symbolize, you can help save the freedom mankind is so unhappily losing
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## I, Pencil
+							Simple? Yet, not a single person on the face of this earth knows how to make me. This sounds fantastic, doesn’t it? Especially when it is realized that there are about one and one-half billion of my kind produced in the U.S.A. each year.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Innumerable Antecedents
+							* Contemplate all the saws and trucks and rope and the countless other gear used in harvesting and carting the cedar logs
+							* My “lead” itself—it contains no lead at all—is complex. The graphite is mined in Ceylon [Sri Lanka]. Consider these miners and those who make their many tools and the makers of the paper sacks in which the graphite is shipped and those who make the string that ties the sacks and those who put them aboard ships and those who make the ships
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							# ...
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Levels of abstractions
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## But all we have is functions and classes
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## ... and services
+						</textarea>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							# Very short functions are a code smell – an overview of the science on function length
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Very short functions are a code smell
+							Take with salt. Software engineering studies are usually either badly done, biased or both
+
+							Blog posts on the studies are even worse
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Very short functions are a code smell
+							* Mining Metrics to Predict Component Failures, Nagappan et al., 2005 found that the size of the longest method in a class correlates positively with post-relase defects. Does this mean we should refactor our long methods into short ones to avoid defects?
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Very short functions are a code smell
+							* Mining Metrics to Predict Component Failures, Nagappan et al., 2005 found that the size of the longest method in a class correlates positively with post-relase defects. Does this mean we should refactor our long methods into short ones to avoid defects?
+							* Turns out the answer is no. In those same studies, the number of methods also correlates with defects
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Very short functions are a code smell
+							Another experiment was performed in 2016 in Effects of Clean Code on Understandability, Henning Grimeland Koller, 2016, Master’s Thesis. A program had been modified with advice taken from “Clean Code” by Robert C. Martin, for example by extracting code to functions with descriptive names. Out of 10 participants 5 subjects were assigned to work on the refactored version and 5 on the unrefactored. The participants were then asked to complete a series of three tasks:
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Very short functions are a code smell
+							1. Adding new functionality
+							2. Changing existing functionality
+							3. Fixing a bug
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Very short functions are a code smell
+							The author concludes that the participants working with longer functions were faster at debugging and with implementing new features but slower when modifying existing features. However, it appears there are no statistical significance tests, which would’ve been helpful due to the low sample size and close results when measuring time taken with adding new functionality.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Very short functions are a code smell
+							The third study is from 2015 (Old habits die hard – Why refactoring for understandability does not give immediate benefits, Ammerlaan et al, 2015), where professional developers conducted a bug fixing task on refactored and unrefactored code they were unfamiliar with
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Very short functions are a code smell
+							In the experiment the bug fix took less time in the original, non-refactored version (roughly 8.5 minutes vs 14.5 minutes) and the result was statistically significant. The authors suggest that this is due to developers being used to the old conventions, although this can also be taken to support the results of the previous experiment where bug fixing times were longer with shorter functions.
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Longer functions limit context and aid code comprehension (my own conclusion)
+						</textarea>
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+						<textarea data-template>
+							# Some (limited) historical context
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Some (limited) historical context
+							```
+							real :: tintrinsic
+							real, allocatable ::  ain(:), aout(:)
+							integer(int64) :: tic, toc, rate
+							allocate(ain(N), aout(N))
+
+							call random_number(ain)
+							call system_clock(tic,count_rate=rate)
+							aout = atan(ain)
+							call system_clock(toc)
+							tintrinsic = (toc-tic)/real(rate)
+							```
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Some (limited) historical context
+							* Fortran has functions and subroutines
+							* Functions are mathematical
+							* Subroutines are to break up the code
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Subroutines take their input and output as parameters
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Both are without stacks (in early fortran) and tend to reference global variables
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Breaking a program up becomes a long sequence of steps which calls another long sequence of steps
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Smalltalk?
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Smalltalk was imagined as a computing environment like Unix
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Smalltalk is a bag of small parts to piece together yourself
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Like lego?
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Like lego?
+							<img src="img/lego.png">
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Like lego?
+							Lego is the least composable construction toy :)
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Smalltalk is a bag of small composable tools
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Like the unix philosophy?
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Like the unix philosophy?
+							> those days are dead and gone and the eulogy was delivered by Perl. -- Rob Pike
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Like the unix philosophy?
+							<img src="img/rob-pike.jpg">
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Like the unix philosophy?
+							Users want software that does meaningful things. Developers want composable tools
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Functional core, imperative shell
+						</textarea>
+					</section>
+				</section>
 			</div>
 		</div>
 
